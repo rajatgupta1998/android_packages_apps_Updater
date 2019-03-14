@@ -65,12 +65,16 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
 
     private static final String TAG = "UpdateListAdapter";
 
+    private static final String GAPPS_SUBSTRING = "gapps";
+    private static final String TWRP_SUBSTRING = "twrp";
+
     private final float mAlphaDisabledValue;
 
     private List<String> mDownloadIds;
     private String mSelectedDownload;
     private UpdaterController mUpdaterController;
     private UpdatesListActivity mActivity;
+    private boolean mIsGappsOrTWRP = false;
 
     private enum Action {
         DOWNLOAD,
@@ -193,9 +197,21 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
         } else if (update.getPersistentStatus() == UpdateStatus.Persistent.VERIFIED) {
             viewHolder.itemView.setOnLongClickListener(
                     getLongClickListener(update, true, viewHolder.mBuildDate));
-            setButtonAction(viewHolder.mAction,
-                    Utils.canInstall(update) ? Action.INSTALL : Action.DELETE,
-                    downloadId, !isBusy());
+
+            if (Utils.canInstall(update)) {
+                setButtonAction(viewHolder.mAction, Action.INSTALL,
+                        downloadId, !isBusy());
+            } else {
+                String filename = update.getName();
+                if (filename.indexOf(GAPPS_SUBSTRING) != -1 || filename.indexOf(TWRP_SUBSTRING) != -1) {
+                    setButtonAction(viewHolder.mAction, Action.INSTALL,
+                            downloadId, !isBusy());
+                    mIsGappsOrTWRP = true;
+                } else {
+                    setButtonAction(viewHolder.mAction, Action.DELETE,
+                            downloadId, !isBusy());
+                }
+            }
         } else if (!Utils.canInstall(update)) {
             viewHolder.itemView.setOnLongClickListener(
                     getLongClickListener(update, false, viewHolder.mBuildDate));
@@ -356,7 +372,7 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
                 UpdateInfo update = mUpdaterController.getUpdate(downloadId);
                 final boolean canInstall = Utils.canInstall(update);
                 clickListener = enabled ? view -> {
-                    if (canInstall) {
+                    if (canInstall || mIsGappsOrTWRP) {
                         getInstallDialog(downloadId).show();
                     } else {
                         mActivity.showSnackbar(R.string.snack_update_not_installable,
