@@ -15,6 +15,7 @@
  */
 package org.lineageos.updater;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -56,6 +57,7 @@ import org.lineageos.updater.download.DownloadClient;
 import org.lineageos.updater.misc.BuildInfoUtils;
 import org.lineageos.updater.misc.Constants;
 import org.lineageos.updater.misc.FileUtils;
+import org.lineageos.updater.misc.PermissionsUtils;
 import org.lineageos.updater.misc.StringGenerator;
 import org.lineageos.updater.misc.Utils;
 import org.lineageos.updater.model.Update;
@@ -82,9 +84,17 @@ public class UpdatesActivity extends UpdatesListActivity {
 
     private static final int READ_REQUEST_CODE = 42;
 
+    // Storage Permissions
+    private static final int STORAGE_PERMISSIONS_REQUEST_CODE = 0;
+    private static final String[] REQUIRED_STORAGE_PERMISSIONS = new String[]{
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_updates);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -217,7 +227,12 @@ public class UpdatesActivity extends UpdatesListActivity {
                 return true;
             }
             case R.id.menu_local_update: {
-                performFileSearch();
+                boolean hasPermission = PermissionsUtils.checkAndRequestPermissions(
+                      this, REQUIRED_STORAGE_PERMISSIONS,
+                      STORAGE_PERMISSIONS_REQUEST_CODE);
+                if (hasPermission) {
+                  performFileSearch();
+                }
             }
         }
         return super.onOptionsItemSelected(item);
