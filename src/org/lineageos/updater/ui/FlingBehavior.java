@@ -1,5 +1,6 @@
 package org.lineageos.updater.ui;
 
+import android.annotation.NonNull;
 import android.content.Context;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -19,8 +20,8 @@ public final class FlingBehavior extends AppBarLayout.Behavior {
     }
 
     @Override
-    public boolean onNestedFling(CoordinatorLayout coordinatorLayout, AppBarLayout child,
-            View target, float velocityX, float velocityY, boolean consumed) {
+    public boolean onNestedFling(@NonNull CoordinatorLayout coordinatorLayout, @NonNull AppBarLayout child,
+                                 @NonNull View target, float velocityX, float velocityY, boolean consumed) {
         if (velocityY > 0 && !isPositive || velocityY < 0 && isPositive) {
             velocityY = velocityY * -1;
         }
@@ -35,8 +36,9 @@ public final class FlingBehavior extends AppBarLayout.Behavior {
     }
 
     @Override
-    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child,
-            View target, int dx, int dy, int[] consumed) {
+    public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout,
+                                  @NonNull AppBarLayout child, @NonNull View target,
+                                  int dx, int dy, @NonNull int[] consumed) {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
         isPositive = dy > 0;
     }
