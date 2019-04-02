@@ -101,7 +101,7 @@ public class UpdaterController {
 
     private Map<String, DownloadEntry> mDownloads = new HashMap<>();
 
-    void notifyUpdateChange(String downloadId) {
+    public void notifyUpdateChange(String downloadId) {
         new Thread(() -> {
             try {
                 Thread.sleep(500);
