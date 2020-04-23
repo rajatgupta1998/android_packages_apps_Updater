@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2017 The LineageOS Project
-     Copyright (C) 2018 The SuperiorOS Project
+     Copyright (C) 2018 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -21,11 +21,11 @@
 
     <!-- Directory where the update files will be downloaded and stored.
          WARNING: The application can and will delete any unknown file. -->
-    <string name="download_path" translatable="false">/data/superiorOS_updates/</string>
+    <string name="download_path" translatable="false">/data/lineageos_updates/</string>
 
     <!-- Directory where the downloads will be exported to.
          The path is relative to the root of the external storage.-->
-    <string name="export_path" translatable="false">SuperiorOS updates/</string>
+    <string name="export_path" translatable="false">LineageOS updates/</string>
 
     <!--
         Optional placeholders replaced at runtime:
@@ -33,7 +33,7 @@
           {type} - Build type
           {incr} - Incremental version
     -->
-    <string name="updater_server_url" translatable="false">https://raw.githubusercontent.com/SuperiorOS/official_devices/pie/{device}.json</string>
+    <string name="updater_server_url" translatable="false">https://raw.githubusercontent.com/rajatgupta1998/lineage_releases/master/15.1.json</string>
 
     <string name="verification_failed_notification">Verification failed</string>
     <string name="verifying_download_notification">Verifying update</string>
@@ -77,7 +77,7 @@
     <string name="menu_copy_url">Copy URL</string>
     <string name="menu_export_update">Export update</string>
     <string name="menu_show_changelog">Show changelog</string>
-    <string name="menu_changelog_url" translatable="false">https://t.me/superioros</string>
+    <string name="menu_changelog_url" translatable="false">https://t.me/g4plus</string>
     <string name="menu_local_update">Choose file ...</string>
     <string name="menu_ab_perf_mode">Prioritize update process</string>
 
@@ -91,12 +91,12 @@
 
     <string name="snack_update_not_installable">This update can\'t be installed on top of the current build.</string>
 
-    <string name="header_title_text">Superior OS</string>
+    <string name="header_title_text">LineageOS</string>
     <string name="header_android_version">Android <xliff:g id="version" example="9.0">%1$s</xliff:g></string>
     <string name="header_last_updates_check">Last checked: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
 
-    <string name="list_build_version">Superior OS <xliff:g id="version" example="Meteor">%1$s</xliff:g></string>
-    <string name="list_build_version_date">Superior OS <xliff:g id="version" example="Meteor">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
+    <string name="list_build_version">LineageOS <xliff:g id="version" example="Meteor">%1$s</xliff:g></string>
+    <string name="list_build_version_date">LineageOS <xliff:g id="version" example="Meteor">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
     <string name="list_device_name">Device: <xliff:g id="device" example="whyred">%1$s</xliff:g></string>
     <string name="list_download_progress_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> • <xliff:g id="percentage" example="56">%3$s</xliff:g></string>
     <string name="list_download_progress_eta_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>) • <xliff:g id="percentage" example="56">%4$s</xliff:g></string>
@@ -151,7 +151,7 @@
 
     <string name="blocked_update_dialog_title">Update blocked</string>
     <string name="blocked_update_dialog_message">This update cannot be installed using the updater app.  Please read <xliff:g id="info_url">%1$s</xliff:g> for more information.</string>
-    <string name="blocked_update_info_url" translatable="false">https://t.me/superior_os</string>
+    <string name="blocked_update_info_url" translatable="false">https://t.me/g4plus</string>
 
     <string name="export_channel_title">Export completion</string>
     <string name="new_updates_channel_title">New updates</string>
