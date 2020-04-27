@@ -11,3 +11,6 @@
 /system_libs/*.jar
 /keystore.properties
 *.jks
+.project
+.settings/
+.vscode/
