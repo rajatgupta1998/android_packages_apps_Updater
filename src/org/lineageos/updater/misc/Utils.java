@@ -57,7 +57,7 @@ import java.util.zip.ZipFile;
 
 public class Utils {
 
-    private static final String TAG = "Utils";
+    private static final String TAG = "updaterUtils";
 
     private Utils() {
     }
